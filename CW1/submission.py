@@ -2,7 +2,7 @@
 #it is not finished yet
 
 
-from math import *
+import math
 import random as rnd
 
 class Submission:
