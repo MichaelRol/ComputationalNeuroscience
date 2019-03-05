@@ -2,6 +2,18 @@ import math
 
 
 w = [[0 for x in range(11)] for y in range(11)] 
+N = 3.0
+
+
+six=[1,1,-1,1,1,1,1,-1,1,1,-1]
+three=[1,-1,1,1,-1,1,1,1,1,-1,-1]
+one=[-1,-1,1,-1,-1,1,-1,1,-1,-1,-1]
+
+
+for i in range(0, 11):
+    for j in range(0, 11):
+        if i != j:
+            w[i][j] = 1/N * (six[i]*six[j] + three[i]*three[j] + one[i]*one[j])
 
 def E(pattern):
     e = 0
@@ -61,33 +73,36 @@ def seven_segment(pattern):
             number+=pow(2,i)
     print(int(number))
         
-
-
-six=[1,1,-1,1,1,1,1,-1,1,1,-1]
-three=[1,-1,1,1,-1,1,1,1,1,-1,-1]
-one=[-1,-1,1,-1,-1,1,-1,1,-1,-1,-1]
-
 seven_segment(three)
 seven_segment(six)  
 seven_segment(one)
 
 
-N = 3.0
-
-
-for i in range(0, 11):
-    for j in range(0, 11):
-        if i != j:
-            w[i][j] = 1/N * (six[i]*six[j] + three[i]*three[j] + one[i]*one[j])
             
-print(w)
 
-print(E(three))
+def hopfield(x):
+    y = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    while(1):
+        for i in range(0, 11):
+            val = 0
+            for j in range(0, 11):
+                if i != j:
+                    val += w[i][j]*x[j]
+            if val > 0:
+                y[i] = 1
+            if val < 0:
+                y[i] = -1
+        if x == y:
+            return y
+        else:
+            x = y
+
+            
 print("test1")
 
 test=[1,-1,1,1,-1,1,1,-1,-1,-1,-1]
 
-seven_segment(test)
+hopfield(test)
 
 #here the network should run printing at each step
 
@@ -95,6 +110,6 @@ print("test2")
 
 test=[1,1,1,1,1,1,1,-1,-1,-1,-1]
 
-seven_segment(test)
+hopfield(test)
 
 #here the network should run printing at each step
