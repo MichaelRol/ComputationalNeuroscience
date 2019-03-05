@@ -83,6 +83,7 @@ seven_segment(one)
 def hopfield(x):
     y = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     while(1):
+        seven_segment(x)
         for i in range(0, 11):
             val = 0
             for j in range(0, 11):
@@ -102,7 +103,7 @@ print("test1")
 
 test=[1,-1,1,1,-1,1,1,-1,-1,-1,-1]
 
-hopfield(test)
+seven_segment(hopfield(test))
 
 #here the network should run printing at each step
 
@@ -110,6 +111,6 @@ print("test2")
 
 test=[1,1,1,1,1,1,1,-1,-1,-1,-1]
 
-hopfield(test)
+seven_segment(hopfield(test))
 
 #here the network should run printing at each step

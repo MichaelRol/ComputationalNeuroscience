@@ -1,8 +1,6 @@
-#this will be the programme for creating your submission document
-#it is not finished yet
+#this is the programme for creating your submission document
 
-
-import math
+from math import *
 import random as rnd
 
 class Submission:
@@ -20,7 +18,7 @@ class Submission:
     def section(self,section_name):
         self.document.write("\\subsection*{"+section_name+"}\n")
         
-    def matrix_print(self,matrix_name,matrix):
+    def matrix_print(self,matrix_name,matrix,rounding=2):
         n=len(matrix)
         r=len(matrix[0])
         self.document.write("$$ "+matrix_name+"=\\left(\\begin{array}{")
@@ -29,7 +27,7 @@ class Submission:
         self.document.write("}\n")
         for j in range(0,n):
             for i in range(0,r):
-                self.document.write(str(matrix[j][i]))
+                self.document.write(str(round(matrix[j][i],rounding)))
                 if i!=r-1:
                     self.document.write("&")
             self.document.write("\\\\")
@@ -72,8 +70,8 @@ class Submission:
     def cr(self):
         self.document.write("\\\\")
 
-    def print_number(self,number):
-        self.document.write(" "+str(number)+" ")
+    def print_number(self,number,rounding=3):
+        self.document.write(" "+str(round(number,rounding))+" ")
 
         
     def qquad(self):
@@ -87,7 +85,7 @@ class Submission:
 
 if __name__ == '__main__':
 
-    matrix=[[i+j for j in range(0,4)] for i in range(0,3)]
+    matrix=[[(i+j)/7.0 for j in range(0,4)] for i in range(0,3)]
     six=[1,1,-1,1,1,1,1,-1,1,1,-1]
     three=[1,-1,1,1,-1,1,1,1,1,-1,-1]
     one=[-1,-1,1,-1,-1,1,-1,1,-1,-1,-1]
