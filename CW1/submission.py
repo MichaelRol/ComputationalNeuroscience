@@ -1,6 +1,6 @@
 #this is the programme for creating your submission document
 
-from math import *
+import math
 import random as rnd
 
 class Submission:
