@@ -100,7 +100,7 @@ print("test1")
 submission.section("Test 1")
 
 test=[1,-1,1,1,-1,1,1,-1,-1,-1,-1]
-submission.seven_segment(test)
+
 while(1):
     next = hopfield(test)
     if next == test:
@@ -127,7 +127,7 @@ print("test2")
 submission.section("Test 2")
 
 test=[1,1,1,1,1,1,1,-1,-1,-1,-1]
-submission.seven_segment(test)
+
 
 while(1):
     next = hopfield(test)
