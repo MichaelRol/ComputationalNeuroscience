@@ -3,7 +3,7 @@
 
 import math
 
-#from submission import *
+import submission
 
 weight_matrix = [[0 for x in range(11)] for y in range(11)] 
 N = 3.0
@@ -81,8 +81,8 @@ def seven_segment(pattern):
             number+=pow(2,i)
     print(int(number))
         
-#submission=Submission("michael_rollins")
-#submission.header("Michael Rollins")
+submission=submission.Submission("michael_rollins")
+submission.header("Michael Rollins")
 
 six=[1,1,-1,1,1,1,1,-1,1,1,-1]
 three=[1,-1,1,1,-1,1,1,1,1,-1,-1]
@@ -93,23 +93,24 @@ seven_segment(six)
 seven_segment(one)
 
 ##this assumes you have called your weight matrix "weight_matrix"
-#submission.section("Weight matrix")
-#submission.matrix_print("W",weight_matrix)
+submission.section("Weight matrix")
+submission.matrix_print("W",weight_matrix)
 
 print("test1")
-#submission.section("Test 1")
+submission.section("Test 1")
 
 test=[1,-1,1,1,-1,1,1,-1,-1,-1,-1]
-
+submission.seven_segment(test)
 while(1):
     next = hopfield(test)
     if next == test:
         break
     else:
         test = next
-        seven_segment(test)
+        submission.seven_segment(test)
 
-#submission.seven_segment(test)
+seven_segment(test)
+
 ##for COMSM0027
 
 ##where energy is the energy of test
@@ -123,10 +124,10 @@ while(1):
 #for the final submission it should also output to submission on each step
 
 print("test2")
-#submission.section("Test 2")
+submission.section("Test 2")
 
 test=[1,1,1,1,1,1,1,-1,-1,-1,-1]
-    
+submission.seven_segment(test)
 
 while(1):
     next = hopfield(test)
@@ -134,9 +135,9 @@ while(1):
         break
     else:
         test = next
-        seven_segment(test)
+        submission.seven_segment(test)
 
-#submission.seven_segment(test)
+seven_segment(test)
 
 ##for COMSM0027
 ##where energy is the energy of test
@@ -150,4 +151,4 @@ while(1):
 #for the final submission it should also output to submission on each step
 
 
-#submission.bottomer()
+submission.bottomer()
