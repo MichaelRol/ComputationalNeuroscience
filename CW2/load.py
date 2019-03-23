@@ -56,11 +56,11 @@ print(CoV(spikes))
 print("Fano Factor: ")
 print(FanoFactor(spikes))
 
-print(SpikeAvg(spikes, stimulus))
-
 xaxis = []
 for x in range(0, 50):
     xaxis.append(x * 2)
 
 plt.plot(xaxis, SpikeAvg(spikes, stimulus))
+plt.title('Spike Triggered Average')
+plt.xlabel('time/ms')
 plt.show()
