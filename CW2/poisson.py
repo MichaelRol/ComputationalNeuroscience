@@ -28,9 +28,19 @@ def CoV(spike_train):
     stdev = np.std(intervals)
     return(stdev/mean)
     
-
-
-
+def FanoFactor(spike_train, big_t, width):
+    counts = [0] * int(round(big_t/width))
+    window_num = 0 
+    for spike in spike_train:
+        while True:
+            if spike < (window_num + 1) * width:
+                counts[window_num] += 1
+                break
+            else:
+                window_num += 1
+    mean = np.mean(counts)
+    var = np.std(counts) * np.std(counts) 
+    return(var/mean)
 
 
 Hz=1.0
@@ -44,8 +54,14 @@ big_t=1000*sec
 
 spike_train=get_spike_train(rate,big_t,tau_ref)
 
+print("CoV: ")
 print(CoV(spike_train))
+print("Fano 10ms Width:")
+print(FanoFactor(spike_train, big_t, 10*ms))
+print("Fano 50ms Width:")
+print(FanoFactor(spike_train, big_t, 50*ms))
+print("Fano 100ms Width:")
+print(FanoFactor(spike_train, big_t, 100*ms))
 
 # print(len(spike_train)/big_t)
-
 # print(spike_train)
