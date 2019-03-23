@@ -16,10 +16,12 @@ def CoV(rho):
         time += 0.002
     mean = np.mean(intervals)
     stdev = np.std(intervals)
-    print(rho[0:100])
-    print(intervals[0:100])
     return(stdev/mean)
 
+def FanoFactor(rho):
+    mean = np.mean(rho)
+    var = np.std(rho) * np.std(rho) 
+    return(var/mean)    
 #spikes=[int(x) for x in load_data("rho.dat")]
 spikes=load_data("rho.dat",int)
 
@@ -32,4 +34,7 @@ stimulus=load_data("stim.dat",float)
 print(len(stimulus))
 print(stimulus[0:5])
 
-
+print("Coefficient of Variation: ")
+print(CoV(spikes))
+print("Fano Factor: ")
+print(FanoFactor(spikes))
