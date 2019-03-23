@@ -1,4 +1,5 @@
 import random as rnd
+import numpy as np
 
 def get_spike_train(rate,big_t,tau_ref):
 
@@ -19,19 +20,32 @@ def get_spike_train(rate,big_t,tau_ref):
 
     return spike_train
 
+def CoV(spike_train):
+    intervals = [spike_train[0]]
+    for i in range(0, len(spike_train) - 1):
+        intervals.append(spike_train[i+1] - spike_train[i])
+    mean = np.mean(intervals)
+    stdev = np.std(intervals)
+    return(stdev/mean)
+    
+
+
+
 
 
 Hz=1.0
 sec=1.0
 ms=0.001
 
-rate=15.0 *Hz
+rate=35.0 *Hz
 tau_ref=5*ms
 
-big_t=5*sec
+big_t=1000*sec
 
 spike_train=get_spike_train(rate,big_t,tau_ref)
 
-print(len(spike_train)/big_t)
+print(CoV(spike_train))
 
-print(spike_train)
+# print(len(spike_train)/big_t)
+
+# print(spike_train)
