@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 def load_data(filename,T):
 
@@ -21,7 +22,23 @@ def CoV(rho):
 def FanoFactor(rho):
     mean = np.mean(rho)
     var = np.std(rho) * np.std(rho) 
-    return(var/mean)    
+    return(var/mean)
+
+def SpikeAvg(spikes, stim):
+    count = 0
+    total = [0] * 50
+    curr = [0] * 50
+    for x in range(50, len(spikes)):
+        if spikes[x] == 1:
+            count += 1
+            curr = stim[x-50: x - 1]
+            for i in range(0, len(curr)):
+                total[i] += curr[i]
+    for y in range(0, len(total)):
+        total[y] = total[y]/count
+    return total
+
+
 #spikes=[int(x) for x in load_data("rho.dat")]
 spikes=load_data("rho.dat",int)
 
@@ -38,3 +55,12 @@ print("Coefficient of Variation: ")
 print(CoV(spikes))
 print("Fano Factor: ")
 print(FanoFactor(spikes))
+
+print(SpikeAvg(spikes, stimulus))
+
+xaxis = []
+for x in range(0, 50):
+    xaxis.append(x * 2)
+
+plt.plot(xaxis, SpikeAvg(spikes, stimulus))
+plt.show()
