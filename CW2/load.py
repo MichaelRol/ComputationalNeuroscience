@@ -19,9 +19,16 @@ def CoV(rho):
     stdev = np.std(intervals)
     return(stdev/mean)
 
-def FanoFactor(rho):
-    mean = np.mean(rho)
-    var = np.std(rho) * np.std(rho) 
+def FanoFactor(rho, width):
+    counts = []
+    for x in range(0, len(rho), width/2):
+        count = 0
+        for y in range(0, width/2):
+            if rho[x+y] == 1:
+                count += 1
+        counts.append(count)
+    mean = np.mean(counts)
+    var = np.std(counts) * np.std(counts) 
     return(var/mean)
 
 def SpikeAvg(spikes, stim):
@@ -53,8 +60,12 @@ print(stimulus[0:5])
 
 print("Coefficient of Variation: ")
 print(CoV(spikes))
-print("Fano Factor: ")
-print(FanoFactor(spikes))
+print("Fano Factor 10ms: ")
+print(FanoFactor(spikes, 10))
+print("Fano Factor 50ms: ")
+print(FanoFactor(spikes, 50))
+print("Fano Factor 100ms: ")
+print(FanoFactor(spikes, 100))
 
 xaxis = []
 for x in range(0, 50):
