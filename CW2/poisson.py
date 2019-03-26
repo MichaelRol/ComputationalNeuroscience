@@ -48,7 +48,7 @@ sec=1.0
 ms=0.001
 
 rate=35.0 *Hz
-tau_ref=5*ms
+tau_ref=0*ms
 
 big_t=1000*sec
 
