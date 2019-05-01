@@ -15,7 +15,7 @@ rmgs = 0.15
 p = 0.5 
 v1_old = rnd.uniform(v_reset, v_thresh)
 v2_old = rnd.uniform(v_reset, v_thresh)
-e_s = -0.08
+e_s = -0#.08
 v1_vector = []
 v2_vector = []
 s1 = 0
@@ -45,8 +45,8 @@ for x in range(0, 1000):
 plt.plot(xaxis, v1_vector, 'r', label = 'Neuron 1')
 plt.plot(xaxis, v2_vector, 'b', label = 'Neuron 2')
 plt.legend(loc='best')
-plt.title('Voltage-Time graph for two Neurons with E_s = ' + str(e_s) + 'V', fontsize=22)
-plt.xlabel('Time (ms)', fontsize=20)
-plt.ylabel('Voltage (V)', fontsize=20)
-plt.savefig('TwoNeurons.png')
+plt.title('Two Neurons with E_s = ' + str(e_s) + 'V', fontsize=22)
+plt.xlabel('Time (ms)')
+plt.ylabel('Voltage (V)')
+plt.savefig('TwoNeurons' + str(e_s) + 'V.png')
 plt.show()
