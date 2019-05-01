@@ -8,8 +8,7 @@ d_t = 0.001
 i_e = 0.0000000031
 tau = 0.01
 v_vector = []
-v_old = v_reset
-
+v_old = i_e
 for _ in range(0, 1000):
     v=v_old + (leak_pot-v_old+ mem_res *i_e )* d_t / tau
     if v > v_thresh:
@@ -25,4 +24,5 @@ plt.plot(xaxis, v_vector)
 plt.title('Integrate and Fire Model')
 plt.xlabel('Time (ms)')
 plt.ylabel('Voltage (mV)')
+plt.savefig('IandF.png')
 plt.show()
