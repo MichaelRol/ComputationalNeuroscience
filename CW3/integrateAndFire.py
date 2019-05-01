@@ -23,6 +23,6 @@ for x in range(0, 1000):
 plt.plot(xaxis, v_vector)
 plt.title('Integrate and Fire Model')
 plt.xlabel('Time (ms)')
-plt.ylabel('Voltage (mV)')
+plt.ylabel('Voltage (V)')
 plt.savefig('IandF.png')
 plt.show()
