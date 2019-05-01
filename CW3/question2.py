@@ -1,8 +1,5 @@
 import random as rnd
-import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
-import math
 
 v_reset = -0.08
 v_thresh = -0.054
